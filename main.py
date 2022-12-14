@@ -18,7 +18,6 @@ def main():
         if data_file == "n":
             exit()
         social_nw = data_retrieval.get_data(data_file)
-        # print(social_nw)
         if social_nw:
             valid_filename = 1
         else:
