@@ -5,7 +5,8 @@
 """
 import os
 
-class data():
+
+class Data:
     def __init__(self):
         self.__fileName = ''
 
@@ -28,45 +29,61 @@ class data():
         else:
             return False
 
+    def get_user(self):
+        return self
+
     def set_data(self):
-        print('A')
+        return self
+
+    def set_user(self):
+        return self
 
 
-class sign_up():
+class SignUp:
     def __init__(self):
-        self.social_NW = []
+        self.user_id = []
+        self.username = []
 
-    def get_common_friends(self, social_NW, user):
-        return social_NW
+    def get_current_users(self):
+        return self
+
+    def set_user_id(self):
+        return self
+
+    def set_current_user(self):
+        return self
+
+    def get_user_id(self):
+        return self
 
 
-class sign_in():
+class SignIn:
     def __init__(self):
-        self.social_NW = []
+        self.user_id = []
+        self.username = []
+
+    def get_user(self):
+        return self
+
+    def set_user(self):
+        return self
 
 
-class user():
-    def __init__(self, name, age):  # The constructor
+class User:
+    def __init__(self, name, age):
         self.__name = ''
         self.__age = 0
         self.set_name(name)
         self.set_age(age)
 
-    # Example getters and setters.
-    def get_name(self):
-        return self.__name
+    def get_friends(self):
+        return self
 
-    def get_age(self):
-        return self.__age
+    def set_friends(self):
+        return self
 
-    def set_name(self, name):
-        if len(name) > 0:
-            self.__name = name.title()
-        else:
-            print('This is not a valid name.')
+    def add_friend(self):
+        return self
 
-    def set_age(self, age):
-        if isinstance(age, int):
-            self.__age = age
-        else:
-            print('Please enter a whole number.')
+    def remove_friend(self):
+        return self

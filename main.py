@@ -10,7 +10,7 @@ def main():
     valid_filename = 0
 
     # Initialise social network routine
-    data_retrieval = classes.data()
+    data_retrieval = classes.Data()
 
     # Ask user to input valid filename, then get data
     while valid_filename == 0:
