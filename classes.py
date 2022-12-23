@@ -87,3 +87,11 @@ class User:
 
     def remove_friend(self):
         return self
+
+class Friends:
+    def __init__(self):
+        self.common_friends = []
+
+    def get_common_friends(self, data):
+        common_friends = data
+        return common_friends

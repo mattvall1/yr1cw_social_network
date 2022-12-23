@@ -5,6 +5,7 @@
 """
 import classes
 
+
 def main():
     selected_menu_option = 0
     valid_filename = 0
@@ -45,7 +46,7 @@ def main():
 
 
         # 1. Display social network
-        if selected_menu_option == 1:
+        if int(selected_menu_option) == 1:
             # Pretty print connections
             for user in social_nw:
                 print(user.replace(" ", " -> "))
@@ -56,16 +57,17 @@ def main():
                 exit()
 
         # 2. Display common friends
-        elif selected_menu_option == 2:
+        elif int(selected_menu_option) == 2:
             friends = classes.friends()
 
-            common_friends = friends.get_common_friends(social_nw, 'Bob')
+            common_friends = friends.get_common_friends(social_nw)
             print(common_friends)
 
             # Ask if we want to return to main menu
             return_menu = input("Return to main menu (Y/N): ").capitalize()
             if return_menu == 'N':
                 exit()
+
 
 # Run the main function
 main()
