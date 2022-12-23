@@ -5,7 +5,6 @@
 """
 import os
 
-
 class Data:
     def __init__(self):
         self.__fileName = ''
@@ -88,10 +87,22 @@ class User:
     def remove_friend(self):
         return self
 
+
 class Friends:
     def __init__(self):
         self.common_friends = []
 
     def get_common_friends(self, data):
-        common_friends = data
-        return common_friends
+        for item in data:
+            self.common_friends.append(item)
+
+        return self.common_friends
+        # Example of what common friends should look like:
+        #       Adam | Amir | Bob | Chris | Mia | Zia | Liz <-- "Columns" of array
+        # Adam ->[1,1,0,0,0,0,0]
+        # Amir ->[1,2,1,0,1,0,0]
+        # Bob ->[0,1,3,0,1,0,0]
+        # Chris->[0,0,0,1,0,0,0]
+        # Mia ->[1,1,1,0,2,0,0]
+        # Zia ->[0,0,0,0,0,1,0]
+        # Liz ->[0,0,0,0,0,0,1]

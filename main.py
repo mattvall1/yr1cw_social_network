@@ -43,8 +43,6 @@ def main():
                 print('Invalid selection, try again.')
                 break
 
-
-
         # 1. Display social network
         if int(selected_menu_option) == 1:
             # Pretty print connections
@@ -58,7 +56,7 @@ def main():
 
         # 2. Display common friends
         elif int(selected_menu_option) == 2:
-            friends = classes.friends()
+            friends = classes.Friends()
 
             common_friends = friends.get_common_friends(social_nw)
             print(common_friends)
