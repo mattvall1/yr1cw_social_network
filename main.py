@@ -24,9 +24,25 @@ def main():
             print("Invalid filename")
 
     while selected_menu_option != 6:
+        valid_selection = 0
+
         # Main menu
         print("Menu: \n 1. Display social network \n 2. Display common friends \n 3. Sign in \n 4. Sign up \n 5. Add friend \n 6. Close")
-        selected_menu_option = int(input("Select an option: "))
+
+        while valid_selection == 0:
+            valid_menu_options = [1, 2, 3, 4, 5, 6]
+            # Check menu option is correct data type - CAN THIS BE DONE NEATLY?
+            try:
+                selected_menu_option = int(input("Select an option: "))
+                if selected_menu_option in valid_menu_options:
+                    valid_selection = 1
+                else:
+                    print("Invalid selection, try again. IFF")
+            except ValueError:
+                print('Invalid selection, try again.')
+                break
+
+
 
         # 1. Display social network
         if selected_menu_option == 1:
@@ -53,3 +69,8 @@ def main():
 
 # Run the main function
 main()
+
+'''
+----------------------------------References------------------------------------
+Exception handling - menu check: https://www.educative.io/answers/what-is-valueerror-in-python
+'''
