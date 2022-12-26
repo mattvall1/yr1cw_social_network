@@ -4,6 +4,7 @@
     Date: 04/12/22
 """
 import classes
+import model
 
 
 def main():
@@ -18,7 +19,7 @@ def main():
         data_file = input("Insert data filename (or 'n' to quit): ")
         if data_file == "n":
             exit()
-        social_nw = data_retrieval.get_data(data_file)
+        social_nw = data_retrieval.get_data("nw_data1") # REMOVE FILENAME AFTER TESTING
         if social_nw:
             valid_filename = 1
         else:
@@ -49,22 +50,17 @@ def main():
             for user in social_nw:
                 print(user.replace(" ", " -> "))
 
-            # Ask if we want to return to main menu
-            return_menu = input("Return to main menu (Y/N): ").capitalize()
-            if return_menu == 'N':
-                exit()
+            # Return to main menu
+            model.return_to_menu()
 
         # 2. Display common friends
         elif int(selected_menu_option) == 2:
             friends = classes.Friends()
 
             common_friends = friends.get_common_friends(social_nw)
-            print(common_friends)
 
-            # Ask if we want to return to main menu
-            return_menu = input("Return to main menu (Y/N): ").capitalize()
-            if return_menu == 'N':
-                exit()
+            # Return to main menu
+            model.return_to_menu()
 
 
 # Run the main function

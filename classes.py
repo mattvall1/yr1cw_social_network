@@ -4,10 +4,12 @@
     Date: 04/12/22
 """
 import os
+import numpy
 
 class Data:
     def __init__(self):
         self.__fileName = ''
+        self.total_users = 0
 
     def get_data(self, __fileName):
         # Add file extension to fileName
@@ -22,8 +24,14 @@ class Data:
                 users = f.readlines()
                 # Remove line endings from users list
                 users_cleaned = []
+                count = 0
                 for user in users:
-                    users_cleaned.append(user.replace("\n", ""))
+                    if count == 0:
+                        # Get total users
+                        self.total_users = int(users[0])
+                    else:
+                        users_cleaned.append(user.replace("\n", ""))
+                    count += 1
             return users_cleaned
         else:
             return False
@@ -93,8 +101,24 @@ class Friends:
         self.common_friends = []
 
     def get_common_friends(self, data):
+        split_names = []
+        # print(data): ['Adam Bob', 'Bob Amir', 'Bob Mia', 'Chris Zia', 'Mia Amir', 'Liz']
+
         for item in data:
-            self.common_friends.append(item)
+            # Split list into individual names
+            split_names.append(item.split(' '))
+
+        # print(split_names): [['Adam', 'Bob'], ['Bob', 'Amir'], ['Bob', 'Mia'], ['Chris', 'Zia'], ['Mia', 'Amir'], ['Liz']]
+
+        # Reformat array
+        individual_names = sum(split_names, [])
+
+        # Remove duplicate entries and sort alphabetically
+        individual_names = sorted(numpy.unique(individual_names))
+
+        # Run through array
+        for item in individual_names:
+            print(item)
 
         return self.common_friends
         # Example of what common friends should look like:
