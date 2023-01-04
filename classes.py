@@ -103,7 +103,9 @@ class Friends:
 
     # Can get data through inheritance perhaps?
     def get_common_friends(self, data):
+        # Setup variables
         split_names = []
+        all_users_friends = []
         # print(data): ['Adam Bob', 'Bob Amir', 'Bob Mia', 'Chris Zia', 'Mia Amir', 'Liz']
 
         for item in data:
@@ -118,32 +120,28 @@ class Friends:
         # print(individual_names): ['Adam', 'Amir', 'Bob', 'Chris', 'Liz', 'Mia', 'Zia']
 
         # Run through array
-        for user in individual_names: # For EVERY user, we need to find how many friends they have in common with EVERY other user
+        for user in individual_names: # Foreach user in the network, COUNT the number of friends they have in common with each of the other users.
             # Start by creating a list of friends for each user
             users_friends = []
             for item in split_names:
-                # print(item)
-
-                # Use try statement to avoid exception handling
+                # Exception handling, if item[1] does not exist, continue
                 try:
                     # Check first item against user to get users friends and add to list
                     if item[0] == user:
                         users_friends.append(item[1])
                     elif item[1] == user:
                         users_friends.append(item[0])
-
                 except IndexError:
-                    users_friends.append([])
+                    continue
 
-            print(users_friends)
-            # Add temporary variable to list
-            self.common_friends.append(users_friends)
-            # break
-        # print(self.common_friends)
+            # Create a list of users and their friends
+            all_users_friends.append([user, users_friends])
+
+        print(all_users_friends)
 
         return self.common_friends
         # Example of what common friends should look like:
-        #       Adam | Amir | Bob | Chris | Mia | Zia | Liz <-- "Columns" of array
+    #       Adam | Amir | Bob | Chris | Mia | Zia | Liz <-- "Columns" of array
         # Adam ->[1,1,0,0,0,0,0] # Adam has 1 friend in common with amir (it's bob)
         # Amir ->[1,2,1,0,1,0,0]
         # Bob ->[0,1,3,0,1,0,0] # Bob has 1 friend in common with amir
