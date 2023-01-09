@@ -121,23 +121,36 @@ class Friends:
 
         # Run through array
         for user in individual_names: # Foreach user in the network, COUNT the number of friends they have in common with each of the other users.
-            # Start by creating a list of friends for each user
-            users_friends = []
+            # Start by creating a set of friends for each user
+            users_friends = set()
             for item in split_names:
                 # Exception handling, if item[1] does not exist, continue
                 try:
                     # Check first item against user to get users friends and add to list
                     if item[0] == user:
-                        users_friends.append(item[1])
+                        users_friends.add(item[1])
                     elif item[1] == user:
-                        users_friends.append(item[0])
+                        users_friends.add(item[0])
                 except IndexError:
                     continue
 
             # Create a list of users and their friends
             all_users_friends.append([user, users_friends])
+        # print(all_users_friends) [['Adam', {'Bob'}], ['Amir', {'Mia', 'Bob'}], ['Bob', {'Amir', 'Adam', 'Mia'}], ['Chris', {'Zia'}], ['Liz', set()], ['Mia', {'Amir', 'Bob'}], ['Zia', {'Chris'}]]
 
-        print(all_users_friends)
+        common_friends_matrix = []
+        count = 0
+        for user in all_users_friends:
+            # user_to_compare = user[0]
+            user_to_compare_friends = user[1]
+            for user in all_users_friends:
+                # user_to_compare_2 = user[0]
+                user_to_compare_friends_2 = user[1]
+                # Intersection of the two sets of friends - gets a count of the common friends
+                friends_intersection = user_to_compare_friends & user_to_compare_friends_2
+                print(len(friends_intersection))
+
+            break
 
         return self.common_friends
         # Example of what common friends should look like:
