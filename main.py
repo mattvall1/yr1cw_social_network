@@ -58,6 +58,8 @@ def main():
             friends = classes.Friends()
 
             common_friends = friends.get_common_friends(social_nw)
+            for common_friends_for_user in common_friends:
+                print(common_friends_for_user[0], " -> ", common_friends_for_user[1])
 
             # Return to main menu
             model.return_to_menu()

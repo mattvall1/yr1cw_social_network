@@ -99,28 +99,24 @@ class User:
 
 class Friends:
     def __init__(self):
-        self.common_friends = []
+        self.common_friends_matrix = []
 
     # Can get data through inheritance perhaps?
     def get_common_friends(self, data):
         # Setup variables
         split_names = []
         all_users_friends = []
-        # print(data): ['Adam Bob', 'Bob Amir', 'Bob Mia', 'Chris Zia', 'Mia Amir', 'Liz']
 
         for item in data:
             # Split list into individual names
             split_names.append(item.split(' '))
 
-        # print(split_names): [['Adam', 'Bob'], ['Bob', 'Amir'], ['Bob', 'Mia'], ['Chris', 'Zia'], ['Mia', 'Amir'], ['Liz']]
-
         # Reformat array then remove duplicate entries and sort alphabetically
         individual_names_unsorted = sum(split_names, [])
         individual_names = sorted(numpy.unique(individual_names_unsorted))
-        # print(individual_names): ['Adam', 'Amir', 'Bob', 'Chris', 'Liz', 'Mia', 'Zia']
 
         # Run through array
-        for user in individual_names: # Foreach user in the network, COUNT the number of friends they have in common with each of the other users.
+        for user in individual_names:
             # Start by creating a set of friends for each user
             users_friends = set()
             for item in split_names:
@@ -136,29 +132,20 @@ class Friends:
 
             # Create a list of users and their friends
             all_users_friends.append([user, users_friends])
-        # print(all_users_friends) [['Adam', {'Bob'}], ['Amir', {'Mia', 'Bob'}], ['Bob', {'Amir', 'Adam', 'Mia'}], ['Chris', {'Zia'}], ['Liz', set()], ['Mia', {'Amir', 'Bob'}], ['Zia', {'Chris'}]]
 
-        common_friends_matrix = []
-        count = 0
+        # Run through the list of users and their friends
         for user in all_users_friends:
-            # user_to_compare = user[0]
+            common_friends = []
             user_to_compare_friends = user[1]
-            for user in all_users_friends:
-                # user_to_compare_2 = user[0]
-                user_to_compare_friends_2 = user[1]
+
+            # Run through the list of users and their friends again, to work out common friends for each other user
+            for friend in all_users_friends:
+                user_to_compare_friends_2 = friend[1]
+
                 # Intersection of the two sets of friends - gets a count of the common friends
                 friends_intersection = user_to_compare_friends & user_to_compare_friends_2
-                print(len(friends_intersection))
+                common_friends.append(len(friends_intersection))
+            # Put the commons friends matrix into an appropriate data structure
+            self.common_friends_matrix.append([user[0], common_friends])
 
-            break
-
-        return self.common_friends
-        # Example of what common friends should look like:
-    #       Adam | Amir | Bob | Chris | Mia | Zia | Liz <-- "Columns" of array
-        # Adam ->[1,1,0,0,0,0,0] # Adam has 1 friend in common with amir (it's bob)
-        # Amir ->[1,2,1,0,1,0,0]
-        # Bob ->[0,1,3,0,1,0,0] # Bob has 1 friend in common with amir
-        # Chris->[0,0,0,1,0,0,0]
-        # Mia ->[1,1,1,0,2,0,0]
-        # Zia ->[0,0,0,0,0,1,0]
-        # Liz ->[0,0,0,0,0,0,1]
+        return self.common_friends_matrix
