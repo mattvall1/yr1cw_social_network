@@ -149,3 +149,27 @@ class Friends:
             self.common_friends_matrix.append([user[0], common_friends])
 
         return self.common_friends_matrix
+
+    def recommend_friend(self, common_friends, user): # HOW TO GET THIS FROM CLASS, NOT PASS
+        # Check to see if the common friends matrix is filled
+        if len(common_friends) == 0:
+            print("You need to run menu option 2 first.")
+            return False
+
+        if user == '': # ADD PROPER CHECKS HERE
+            print("Invalid username.")
+            return False
+
+        # Setup variables
+        user_friends = 0
+        recommended_friend = ''
+
+        # Find a match for the given user and get common friends count
+        for friends in common_friends:
+            if friends[0] == user:
+                user_friends = friends[1]
+
+
+        print(user_friends)
+
+        return recommended_friend

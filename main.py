@@ -8,6 +8,7 @@ import model
 
 
 def main():
+    global common_friends
     selected_menu_option = 0
     valid_filename = 0
 
@@ -29,7 +30,7 @@ def main():
         valid_selection = 0
 
         # Main menu
-        print("Menu: \n 1. Display social network \n 2. Display common friends \n 3. Sign in \n 4. Sign up \n 5. Add friend \n 6. Close")
+        print("Menu: \n 1. Display social network \n 2. Display common friends \n 3. Recommend new friends (option 2 MUST be run FIRST) \n 4. Sign in \n 5. Sign up \n 6. Add friend \n 7. Close")
 
         while valid_selection == 0:
             valid_menu_options = [1, 2, 3, 4, 5, 6]
@@ -44,6 +45,7 @@ def main():
                 print('Invalid selection, try again.')
                 break
 
+        friends = classes.Friends()
         # 1. Display social network
         if int(selected_menu_option) == 1:
             # Pretty print connections
@@ -55,11 +57,17 @@ def main():
 
         # 2. Display common friends
         elif int(selected_menu_option) == 2:
-            friends = classes.Friends()
 
             common_friends = friends.get_common_friends(social_nw)
             for common_friends_for_user in common_friends:
                 print(common_friends_for_user[0], " -> ", common_friends_for_user[1])
+
+            # Return to main menu
+            model.return_to_menu()
+
+        elif int(selected_menu_option) == 3:
+            user = str(input("Insert username: ")) # ERROR MANAGEMENT HERE
+            friends.recommend_friend(common_friends, user)
 
             # Return to main menu
             model.return_to_menu()
