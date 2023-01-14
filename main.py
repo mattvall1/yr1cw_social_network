@@ -20,7 +20,7 @@ def main():
         data_file = input("Insert data filename (or 'n' to quit): ")
         if data_file == "n":
             exit()
-        social_nw = data_retrieval.get_data("nw_data1") # REMOVE FILENAME AFTER TESTING
+        social_nw = data_retrieval.get_data("nw_data2") # REMOVE FILENAME AFTER TESTING
         if social_nw:
             valid_filename = 1
         else:
@@ -67,8 +67,10 @@ def main():
 
         elif int(selected_menu_option) == 3:
             user = str(input("Insert username: ")) # ERROR MANAGEMENT HERE
-            friends.recommend_friend(common_friends, user)
+            recommended_friend = friends.recommend_friend(common_friends, user)
 
+            # Print results nicely
+            print('Recommended friend for ', user, ' is ', recommended_friend)
             # Return to main menu
             model.return_to_menu()
 
