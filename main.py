@@ -50,7 +50,10 @@ def main():
         if int(selected_menu_option) == 1:
             # Pretty print connections
             for user in social_nw:
-                print(user.replace(" ", " -> "))
+                try:
+                    print(user[0], " -> ", user[1])
+                except IndexError:
+                    print(user[0], " -> ")
 
             # Return to main menu
             model.return_to_menu()

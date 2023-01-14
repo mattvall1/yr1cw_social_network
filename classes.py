@@ -106,22 +106,17 @@ class Friends:
     # Can get data through inheritance perhaps?
     def get_common_friends(self, data):
         # Setup variables
-        split_names = []
         all_users_friends = []
 
-        for item in data:
-            # Split list into individual names
-            split_names.append(item.split(' '))
-
         # Reformat array then remove duplicate entries and sort alphabetically
-        individual_names_unsorted = sum(split_names, [])
+        individual_names_unsorted = sum(data, [])
         individual_names = sorted(numpy.unique(individual_names_unsorted))
 
         # Run through array
         for user in individual_names:
             # Start by creating a set of friends for each user
             users_friends = set()
-            for item in split_names:
+            for item in data:
                 # Exception handling, if item[1] does not exist, continue
                 try:
                     # Check first item against user to get users friends and add to list
