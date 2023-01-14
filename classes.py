@@ -23,7 +23,7 @@ class Data:
             # Code to open file (use: nw_data1)
             with open('data/' + __fileName, 'r') as f:
                 users = f.readlines()
-                # Remove line endings from users list
+                # Remove line endings from users list and split to get list of lists
                 users_cleaned = []
                 count = 0
                 for user in users:
@@ -31,8 +31,10 @@ class Data:
                         # Get total users
                         self.total_users = int(users[0])
                     else:
-                        users_cleaned.append(user.replace("\n", ""))
+                        user = user.replace("\n", "")
+                        users_cleaned.append(user.split(" "))
                     count += 1
+
             return users_cleaned
         else:
             return False
