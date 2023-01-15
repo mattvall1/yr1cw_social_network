@@ -3,7 +3,6 @@
     Purpose: Main file for running the social network
     Date: 04/12/22
 """
-import classes
 import data
 import friends as fr
 import model
