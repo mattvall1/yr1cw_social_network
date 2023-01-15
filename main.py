@@ -4,6 +4,8 @@
     Date: 04/12/22
 """
 import classes
+import data
+import friends as fr
 import model
 
 
@@ -13,7 +15,7 @@ def main():
     valid_filename = 0
 
     # Initialise social network routine
-    data_retrieval = classes.Data()
+    data_retrieval = data.Data()
 
     # Ask user to input valid filename, then get data
     while valid_filename == 0:
@@ -45,7 +47,7 @@ def main():
                 print('Invalid selection, try again.')
                 break
 
-        friends = classes.Friends()
+        friends = fr.Friends()
         # 1. Display social network
         if int(selected_menu_option) == 1:
             # Pretty print connections
