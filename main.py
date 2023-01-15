@@ -50,8 +50,10 @@ def main():
         if int(selected_menu_option) == 1:
             # Pretty print connections
             for user in social_nw:
+                # Convert set into comma seperated string
+                friends = ", ".join(user[1])
                 try:
-                    print(user[0], " -> ", user[1])
+                    print(user[0], " -> ", friends)
                 except IndexError:
                     print(user[0], " -> ")
 

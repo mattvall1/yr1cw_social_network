@@ -35,7 +35,32 @@ class Data:
                         users_cleaned.append(user.split(" "))
                     count += 1
 
-            return users_cleaned
+            # Setup variables
+            all_users_friends = []
+
+            # Reformat array then remove duplicate entries and sort alphabetically
+            individual_names_unsorted = sum(users_cleaned, [])
+            individual_names = sorted(numpy.unique(individual_names_unsorted))
+
+            # Create a list of users and their friends
+            for user in individual_names:
+                # Start by creating a set of friends for each user
+                users_friends = set()
+                for item in users_cleaned:
+                    # Exception handling, if item[1] does not exist, continue
+                    try:
+                        # Check first item against user to get users friends and add to list
+                        if item[0] == user:
+                            users_friends.add(item[1])
+                        elif item[1] == user:
+                            users_friends.add(item[0])
+                    except IndexError:
+                        continue
+
+                # Add processed users and their friends into an appropriate data structure
+                all_users_friends.append([user, users_friends])
+
+            return all_users_friends
         else:
             return False
 
@@ -47,37 +72,6 @@ class Data:
 
     def set_user(self):
         return self
-
-
-class SignUp:
-    def __init__(self):
-        self.user_id = []
-        self.username = []
-
-    def get_current_users(self):
-        return self
-
-    def set_user_id(self):
-        return self
-
-    def set_current_user(self):
-        return self
-
-    def get_user_id(self):
-        return self
-
-
-class SignIn:
-    def __init__(self):
-        self.user_id = []
-        self.username = []
-
-    def get_user(self):
-        return self
-
-    def set_user(self):
-        return self
-
 
 class User:
     def __init__(self, name, age):
@@ -104,32 +98,7 @@ class Friends:
         self.common_friends_matrix = []
 
     # Can get data through inheritance perhaps?
-    def get_common_friends(self, data):
-        # Setup variables
-        all_users_friends = []
-
-        # Reformat array then remove duplicate entries and sort alphabetically
-        individual_names_unsorted = sum(data, [])
-        individual_names = sorted(numpy.unique(individual_names_unsorted))
-
-        # Run through array
-        for user in individual_names:
-            # Start by creating a set of friends for each user
-            users_friends = set()
-            for item in data:
-                # Exception handling, if item[1] does not exist, continue
-                try:
-                    # Check first item against user to get users friends and add to list
-                    if item[0] == user:
-                        users_friends.add(item[1])
-                    elif item[1] == user:
-                        users_friends.add(item[0])
-                except IndexError:
-                    continue
-
-            # Create a list of users and their friends
-            all_users_friends.append([user, users_friends])
-
+    def get_common_friends(self, all_users_friends):
         # Run through the list of users and their friends
         for user in all_users_friends:
             common_friends = []
