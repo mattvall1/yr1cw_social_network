@@ -52,9 +52,8 @@ def main():
             # Pretty print connections
             for user in social_nw:
                 # Convert set into comma seperated string
-                friends = ", ".join(user[1])
                 try:
-                    print(user[0], " -> ", friends)
+                    print(user[0], " -> ", ", ".join(user[1]))
                 except IndexError:
                     print(user[0], " -> ")
 
@@ -75,8 +74,11 @@ def main():
             user = str(input("Insert username: ")) # ERROR MANAGEMENT HERE
             recommended_friend = friends.recommend_friend(common_friends, user)
 
-            # Print results nicely
-            print('Recommended friend for ', user, ' is ', recommended_friend)
+            # Print results nicely, first determining whether we need plurals
+            if len(recommended_friend) > 1:
+                print('Recommended friends for ', user, ' are ', ", ".join(recommended_friend))
+            else:
+                print('Recommended friend for ', user, ' is ', recommended_friend[0])
             # Return to main menu
             model.return_to_menu()
 

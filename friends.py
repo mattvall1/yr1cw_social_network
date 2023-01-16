@@ -56,7 +56,7 @@ class Friends:
         recommended_friends = []
         count = 0
         for number in user_friends_unsorted:
-            if number == second_highest_number:
+            if number == second_highest_number and common_friends[count][0] != user:
                 recommended_friends.append(common_friends[count][0])
             count += 1
 
