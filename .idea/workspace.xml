@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3c76aaa0-b6a6-44b3-b9e4-95b5d077e39d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/friends.py" beforeDir="false" afterPath="$PROJECT_DIR$/friends.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +122,7 @@
       <workItem from="1673618338748" duration="12756000" />
       <workItem from="1673654862143" duration="609000" />
       <workItem from="1673696892449" duration="11742000" />
-      <workItem from="1673724598258" duration="14593000" />
+      <workItem from="1673724598258" duration="29552000" />
     </task>
     <servers />
   </component>
@@ -143,7 +144,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/yr1cw_social_network$main.coverage" NAME="main Coverage Results" MODIFIED="1673796196243" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/yr1cw_social_network$main.coverage" NAME="main Coverage Results" MODIFIED="1673876899677" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/yr1cw_social_network$classes.coverage" NAME="classes Coverage Results" MODIFIED="1673624095180" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/yr1cw_social_network$mark.coverage" NAME="mark Coverage Results" MODIFIED="1673621440595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>

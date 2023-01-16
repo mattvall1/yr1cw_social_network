@@ -39,22 +39,25 @@ class Friends:
 
         # Setup variables
         user_friends = 0
-        found_friend = 0
-        recommended_friend = ''
 
         # Find a match for the given user and get common friends count
         for friends in common_friends:
             if friends[0] == user:
                 user_friends = friends[1]
 
-        # Get position of second highest number in common friends count
-        user_friends.sort()
-        highest_count_position = user_friends.index(user_friends[-2])
+        # Split into a sorted/unsorted user_friends array to use later
+        user_friends_unsorted = user_friends
+        user_friends = sorted(user_friends)
 
-        # Get the name of the recommended friend(s)
-        recommended_friend = common_friends[highest_count_position][0]
+        # Get second highest number in common friends
+        second_highest_number = user_friends[-2]
 
-        print(highest_count_position)
-        print(user_friends)
+        # Get the name(s) of the recommended friend(s)
+        recommended_friends = []
+        count = 0
+        for number in user_friends_unsorted:
+            if number == second_highest_number:
+                recommended_friends.append(common_friends[count][0])
+            count += 1
 
-        return recommended_friend
+        return recommended_friends
