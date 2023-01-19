@@ -6,6 +6,7 @@
 import data
 import friends as fr
 import model
+import statistics
 
 
 def main():
@@ -31,7 +32,7 @@ def main():
         valid_selection = 0
 
         # Main menu
-        print("Menu: \n 1. Display social network \n 2. Display common friends \n 3. Recommend new friends (option 2 MUST be run FIRST) \n 4. Sign in \n 5. Sign up \n 6. Add friend \n 7. Close")
+        print("Menu: \n 1. Display social network \n 2. Display common friends \n 3. Recommend new friends (option 2 MUST be run FIRST) \n ------ Statistics ------ \n 4. Get number of friends for user \n 5. Get users with the least number of friends/no friends at all: \n 6. Add friend \n 7. Close")
 
         while valid_selection == 0:
             valid_menu_options = [1, 2, 3, 4, 5, 6]
@@ -70,6 +71,7 @@ def main():
             # Return to main menu
             model.return_to_menu()
 
+        # 3. Recommend new friends
         elif int(selected_menu_option) == 3:
             user = str(input("Insert username: ")) # ERROR MANAGEMENT HERE
             recommended_friend = friends.recommend_friend(common_friends, user)
@@ -82,6 +84,20 @@ def main():
             # Return to main menu
             model.return_to_menu()
 
+        if selected_menu_option >= 4:
+            # Get stats class for use in all following menu options
+            stats = statistics.Statistics()
+
+            if int(selected_menu_option) == 4:
+                user = str(input("Insert username: "))
+                no_of_friends = stats.get_friends_count_for_user(social_nw, user)
+                print(user, " has ", no_of_friends, " friends.")
+
+                # Return to main menu
+                model.return_to_menu()
+            elif int(selected_menu_option) == 5:
+                stats.get_indirect_relationships(social_nw)
+                continue
 
 # Run the main function
 main()
