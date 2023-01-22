@@ -96,8 +96,13 @@ def main():
                 # Return to main menu
                 model.return_to_menu()
             elif int(selected_menu_option) == 5:
-                stats.get_indirect_relationships(social_nw)
+                users_no_friends = stats.get_users_little_no_friends(social_nw)
+                print("The following users have few or no friends ", users_no_friends)
                 continue
+            elif int(selected_menu_option) == 6:
+                user = str(input("Insert username: "))
+                relationships = stats.get_relationships_for_user(social_nw, user)
+                print(user, " -> ", ", ".join(relationships))
 
 # Run the main function
 main()
