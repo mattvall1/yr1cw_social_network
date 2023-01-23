@@ -9,3 +9,13 @@ def return_to_menu():
     return_menu = input("Return to main menu (Y/N): ").capitalize()
     if return_menu == 'N':
         exit()
+
+def username_input_mgmt(individual_names):
+    # Ask for an input and clean
+    user = str(input("Insert username: "))
+    # Check the name exists in the network
+    if user in individual_names:
+        return user
+    else:
+        print("This username does not exist.")
+        return_to_menu()

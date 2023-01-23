@@ -22,7 +22,10 @@ def main():
         data_file = input("Insert data filename (or 'n' to quit): ")
         if data_file == "n":
             exit()
-        social_nw = data_retrieval.get_data("nw_data2") # REMOVE FILENAME AFTER TESTING
+        # Separate social_nw and individual names into separate variables
+        data_unsplit = data_retrieval.get_data("nw_data2") # REMOVE FILENAME AFTER TESTING
+        social_nw = data_unsplit[0]
+        individual_names = data_unsplit[1]
         if social_nw:
             valid_filename = 1
         else:
@@ -73,7 +76,7 @@ def main():
 
         # 3. Recommend new friends
         elif int(selected_menu_option) == 3:
-            user = str(input("Insert username: ")) # ERROR MANAGEMENT HERE
+            user = model.username_input_mgmt(individual_names)
             recommended_friend = friends.recommend_friend(common_friends, user)
 
             # Print results nicely, first determining whether we need plurals
@@ -89,9 +92,12 @@ def main():
             stats = statistics.Statistics()
 
             if int(selected_menu_option) == 4:
-                user = str(input("Insert username: "))
+                user = model.username_input_mgmt(individual_names)
                 no_of_friends = stats.get_friends_count_for_user(social_nw, user)
-                print(user, " has ", no_of_friends, " friends.")
+                if no_of_friends:
+                    print(user, " has ", no_of_friends, " friends.")
+                else:
+                    print("Inputted name does not exist")
 
                 # Return to main menu
                 model.return_to_menu()
@@ -100,7 +106,7 @@ def main():
                 print("The following users have few or no friends ", users_no_friends)
                 continue
             elif int(selected_menu_option) == 6:
-                user = str(input("Insert username: "))
+                user = model.username_input_mgmt(individual_names)
                 relationships = stats.get_relationships_for_user(social_nw, user)
                 print(user, " -> ", ", ".join(relationships))
 

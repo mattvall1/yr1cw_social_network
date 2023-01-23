@@ -60,7 +60,22 @@ class Data:
                 # Add processed users and their friends into an appropriate data structure
                 all_users_friends.append([user, users_friends])
 
-            return all_users_friends
+            # Check consistency of the network before we return all users friends
+            '''
+            A network is considered consistent if UserA is friends with UserB AND UserB is also friends with UserA. 
+            The network is inconsistent otherwise. If the network is found to be inconsistent, raise an exception and prompt the user with an error message.
+            '''
+            # print(all_users_friends)
+            try:
+                for friends in all_users_friends:
+                    print(friends)
+                    if 1 == 1:
+                        pass
+
+            except:
+                print("The network is inconsistent, choose another file")
+
+            return [all_users_friends, individual_names] # Return both the network and ordered list of individual names
         else:
             return False
 
