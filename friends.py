@@ -20,8 +20,7 @@ class Friends:
                 user_to_compare_friends_2 = friend[1]
 
                 # Intersection of the two sets of friends - gets a count of the common friends
-                friends_intersection = user_to_compare_friends & user_to_compare_friends_2
-                common_friends.append(len(friends_intersection))
+                common_friends.append(len(user_to_compare_friends & user_to_compare_friends_2))
             # Put the commons friends matrix into an appropriate data structure
             self.common_friends_matrix.append([user[0], common_friends])
 
