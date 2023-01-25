@@ -7,6 +7,7 @@
     <list default="true" id="3c76aaa0-b6a6-44b3-b9e4-95b5d077e39d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/friends.py" beforeDir="false" afterPath="$PROJECT_DIR$/friends.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/statistics.py" beforeDir="false" afterPath="$PROJECT_DIR$/statistics.py" afterDir="false" />
     </list>
@@ -135,7 +136,7 @@
       <workItem from="1674496046655" duration="8830000" />
       <workItem from="1674560294568" duration="1657000" />
       <workItem from="1674585805310" duration="3141000" />
-      <workItem from="1674653193416" duration="6028000" />
+      <workItem from="1674653193416" duration="12419000" />
     </task>
     <servers />
   </component>
@@ -168,7 +169,7 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/yr1cw_social_network$main.coverage" NAME="main Coverage Results" MODIFIED="1674659287574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/yr1cw_social_network$main.coverage" NAME="main Coverage Results" MODIFIED="1674668054578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/yr1cw_social_network$classes.coverage" NAME="classes Coverage Results" MODIFIED="1673624095180" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/yr1cw_social_network$mark.coverage" NAME="mark Coverage Results" MODIFIED="1673621440595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>

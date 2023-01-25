@@ -5,18 +5,18 @@
 """
 
 class Friends:
-    def __init__(self):
+    def __init__(self, social_nw):
         self.common_friends_matrix = []
+        self.all_users_friends = social_nw
 
-    # Can get data through inheritance perhaps?
-    def get_common_friends(self, all_users_friends):
+    def get_common_friends(self):
         # Run through the list of users and their friends
-        for user in all_users_friends:
+        for user in self.all_users_friends:
             common_friends = []
             user_to_compare_friends = user[1]
 
             # Run through the list of users and their friends again, to work out common friends for each other user
-            for friend in all_users_friends:
+            for friend in self.all_users_friends:
                 user_to_compare_friends_2 = friend[1]
 
                 # Intersection of the two sets of friends - gets a count of the common friends
@@ -26,14 +26,10 @@ class Friends:
 
         return self.common_friends_matrix
 
-    def recommend_friend(self, common_friends, user): # HOW TO GET THIS FROM CLASS, NOT PASS
+    def recommend_friend(self, common_friends, user):
         # Check to see if the common friends matrix is filled
         if len(common_friends) == 0:
             print("You need to run menu option 2 first.")
-            return False
-
-        if user == '': # ADD PROPER CHECKS HERE
-            print("Invalid username.")
             return False
 
         # Setup variables

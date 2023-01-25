@@ -50,7 +50,7 @@ def main():
                 print('Invalid selection, try again.')
                 break
 
-        friends = fr.Friends()
+        friends = fr.Friends(social_nw)
         # 1. Display social network
         if int(selected_menu_option) == 1:
             # Pretty print connections
@@ -66,8 +66,7 @@ def main():
 
         # 2. Display common friends
         elif int(selected_menu_option) == 2:
-
-            common_friends = friends.get_common_friends(social_nw)
+            common_friends = friends.get_common_friends()
             for common_friends_for_user in common_friends:
                 print(common_friends_for_user[0], " -> ", common_friends_for_user[1])
 
