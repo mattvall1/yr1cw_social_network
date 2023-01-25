@@ -44,14 +44,21 @@ class Friends:
         user_friends_unsorted = user_friends
         user_friends = sorted(user_friends)
 
-        # Get second highest number in common friends
-        second_highest_number = user_friends[-2]
+        # Get second-highest number in common friends
+        user_to_add = user_friends[-2]
+
+        # Get a list of users friends, to compare later on
+        users_current_friends = []
+        for users_friends_names in self.all_users_friends:
+            if users_friends_names[0] == user:
+                users_current_friends = users_friends_names[1]
 
         # Get the name(s) of the recommended friend(s)
         recommended_friends = []
         count = 0
         for number in user_friends_unsorted:
-            if number == second_highest_number and common_friends[count][0] != user:
+            # Make sure we don't recommend any of current friends - first,
+            if number == user_to_add and common_friends[count][0] != user and common_friends[count][0] not in users_current_friends:
                 recommended_friends.append(common_friends[count][0])
             count += 1
 
