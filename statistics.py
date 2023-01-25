@@ -4,6 +4,7 @@
     Date: 15/01/22
 """
 import friends
+import numpy
 
 class Statistics(friends.Friends):
     def __init__(self):
@@ -15,8 +16,33 @@ class Statistics(friends.Friends):
             if friend[0] == name:
                 return len(friend[1])
 
-    def get_users_with_no_friends_at_all(self, social_nw, name):
-        pass
+    def get_users_with_low_friends(self, social_nw):
+        # Get a list of users and their friend count and sort
+        friend_counts = []
+        friend_counts_no_names = []
+        for user in social_nw:
+            friend_counts.append([len(user[1]), user[0]])
+            friend_counts_no_names.append(len(user[1])) # No names, to get second lowest number later on
+        friend_counts = sorted(friend_counts)
+
+        # Get lowest number that isn't 0, if 0 exists.
+        friend_counts_no_names = sorted(numpy.unique(friend_counts_no_names))
+        if friend_counts_no_names[0] == 0:
+            lowest_number = friend_counts_no_names[1]
+        else:
+            lowest_number = friend_counts_no_names[0]
+
+        # Create list of users with no friends
+        users_with_no_friends = []
+        for friend in friend_counts:
+            # If statements to get users with no/low friends
+            if friend[0] == 0:
+                users_with_no_friends.append(friend[1])
+            if friend[0] == lowest_number:
+                users_with_no_friends.append(friend[1])
+
+        return users_with_no_friends
+
     def get_relationships_for_user(self, social_nw, name):
         for friend in social_nw:
             # Check if name is equal to inputted name, then return their friends

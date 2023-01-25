@@ -102,9 +102,11 @@ def main():
                 # Return to main menu
                 model.return_to_menu()
             elif int(selected_menu_option) == 5:
-                users_no_friends = stats.get_users_little_no_friends(social_nw)
-                print("The following users have few or no friends ", users_no_friends)
-                continue
+                users_no_friends = stats.get_users_with_low_friends(social_nw)
+                print("The following users have few or no friends", ", ".join(users_no_friends))
+
+                # Return to main menu
+                model.return_to_menu()
             elif int(selected_menu_option) == 6:
                 user = model.username_input_mgmt(individual_names)
                 relationships = stats.get_relationships_for_user(social_nw, user)
