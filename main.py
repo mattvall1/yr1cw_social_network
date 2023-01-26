@@ -38,7 +38,7 @@ def main():
         print("Menu: \n 1. Display social network \n 2. Display common friends \n 3. Recommend new friends (option 2 MUST be run FIRST) \n ------ Statistics ------ \n 4. Get number of friends for user \n 5. Get users with the least number of friends/no friends at all: \n 6. Add friend \n 7. Close")
 
         while valid_selection == 0:
-            valid_menu_options = [1, 2, 3, 4, 5, 6]
+            valid_menu_options = [1, 2, 3, 4, 5, 6, 7]
             # Check menu option is correct data type - CAN THIS BE DONE NEATLY?
             try:
                 selected_menu_option = int(input("Select an option: "))
@@ -88,11 +88,11 @@ def main():
 
         if selected_menu_option >= 4:
             # Get stats class for use in all following menu options
-            stats = statistics.Statistics()
+            stats = statistics.Statistics(social_nw)
 
             if int(selected_menu_option) == 4:
                 user = model.username_input_mgmt(individual_names)
-                no_of_friends = stats.get_friends_count_for_user(social_nw, user)
+                no_of_friends = stats.get_friends_count_for_user(user)
                 if no_of_friends:
                     print(user, " has ", no_of_friends, " friends.")
                 else:
@@ -101,14 +101,17 @@ def main():
                 # Return to main menu
                 model.return_to_menu()
             elif int(selected_menu_option) == 5:
-                users_no_friends = stats.get_users_with_low_friends(social_nw)
+                users_no_friends = stats.get_users_with_low_friends()
                 print("The following users have few or no friends", ", ".join(users_no_friends))
 
                 # Return to main menu
                 model.return_to_menu()
             elif int(selected_menu_option) == 6:
                 user = model.username_input_mgmt(individual_names)
-                relationships = stats.get_relationships_for_user(social_nw, user)
+                relationships = stats.get_relationships_for_user(user)
+                print(user, " -> ", ", ".join(relationships))
+            elif int(selected_menu_option) == 7:
+                relationships = stats.get_indirect_relationships()
                 print(user, " -> ", ", ".join(relationships))
 
 # Run the main function

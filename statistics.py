@@ -7,22 +7,23 @@ import friends
 import numpy
 
 class Statistics(friends.Friends):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, social_nw):
+        self.all_users_friends = social_nw
+        super().__init__(social_nw)
 
-    def get_friends_count_for_user(self, social_nw, name):
-        for friend in social_nw:
+    def get_friends_count_for_user(self, name):
+        for friend in self.all_users_friends:
             # Check if name is equal to inputted name, then check the length of their friends
             if friend[0] == name:
                 return len(friend[1])
 
-    def get_users_with_low_friends(self, social_nw):
+    def get_users_with_low_friends(self):
         # Get a list of users and their friend count and sort
         friend_counts = []
         friend_counts_no_names = []
-        for user in social_nw:
+        for user in self.all_users_friends:
             friend_counts.append([len(user[1]), user[0]])
-            friend_counts_no_names.append(len(user[1])) # No names, to get second lowest number later on
+            friend_counts_no_names.append(len(user[1])) # No names, to get second-lowest number later on
         friend_counts = sorted(friend_counts)
 
         # Get lowest number that isn't 0, if 0 exists.
@@ -43,8 +44,8 @@ class Statistics(friends.Friends):
 
         return users_with_no_friends
 
-    def get_relationships_for_user(self, social_nw, name):
-        for friend in social_nw:
+    def get_relationships_for_user(self, name):
+        for friend in self.all_users_friends:
             # Check if name is equal to inputted name, then return their friends
             if friend[0] == name:
                 return friend[1]
