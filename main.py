@@ -110,9 +110,17 @@ def main():
                 user = model.username_input_mgmt(individual_names)
                 relationships = stats.get_relationships_for_user(user)
                 print(user, " -> ", ", ".join(relationships))
+
+                # Return to main menu
+                model.return_to_menu()
             elif int(selected_menu_option) == 7:
-                relationships = stats.get_indirect_relationships()
-                print(user, " -> ", ", ".join(relationships))
+                indirect_friends = stats.get_indirect_relationships()
+                # Pretty print indirect friends
+                for indirect_friend in indirect_friends:
+                    print(indirect_friend[0], " -> ", ", ".join(indirect_friend[1]))
+
+                # Return to main menu
+                model.return_to_menu()
 
 # Run the main function
 main()

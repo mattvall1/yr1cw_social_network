@@ -50,6 +50,13 @@ class Statistics(friends.Friends):
             if friend[0] == name:
                 return friend[1]
 
-    def get_indirect_relationships(self, social_nw):
-        common_friends = friends.Friends.get_common_friends(self, social_nw)
-        print(common_friends)
+    def get_indirect_relationships(self):
+        indirect_friends = []
+        # Run through all users to get each of their friends lists
+        for friends_array in self.all_users_friends:
+            for each_friend in friends_array[1]:
+                # Get relationships for each of the users friends
+                user_friends = self.get_relationships_for_user(each_friend)
+                user_friends.remove(friends_array[0])
+            indirect_friends.append([friends_array[0], user_friends])
+        return indirect_friends
