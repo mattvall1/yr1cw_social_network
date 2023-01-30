@@ -21,7 +21,7 @@ class Data:
         # Check datafile exists against dir list
         if __fileName in data_file_list:
             # Code to open file (use: nw_data1)
-            with open('data/' + __fileName, 'r') as file:
+            with open('data/' + __fileName, 'r') as file:  # This is not duplicate because ....... Mention this in the bugs report - legacy files
                 users = file.readlines()
                 # Remove line endings from users list and split to get list of lists
                 users_cleaned = []
@@ -61,15 +61,15 @@ class Data:
                 all_users_friends.append([user, users_friends])
 
             # Check consistency of the network before we return all users friends
-            for all_users in all_users_friends:
-                user_to_compare = all_users[0]
+            for all_users_outer in all_users_friends:
+                user_to_compare = all_users_outer[0]
                 # Get indirect friends so we can check if the user exists in
-                for each_friend in all_users[1]:
+                for each_friend in all_users_outer[1]:
                     indirect_friends = []
-                    for all_users in all_users_friends:
-                        if all_users[0] == each_friend:
+                    for all_users_inner in all_users_friends:
+                        if all_users_inner[0] == each_friend:
                             # Add indirect friends into temporary list
-                            indirect_friends = indirect_friends + list(all_users[1])
+                            indirect_friends = indirect_friends + list(all_users_inner[1])
 
                     # If the network is inconsistent, raise an exception. Continue if not
                     if user_to_compare in indirect_friends:
