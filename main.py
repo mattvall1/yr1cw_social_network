@@ -19,15 +19,15 @@ def main():
 
     # Ask user to input valid filename, then get data
     while valid_filename == 0:
-        data_file = input("Insert data filename (or 'n' to quit): ")
+        data_file = str(input("Insert data filename (or 'n' to quit): "))
         if data_file == "n":
             exit()
         # Separate social_nw and individual names into separate variables
-        data_unsplit = data_retrieval.get_data("nw_data2") # REMOVE FILENAME AFTER TESTING
-        social_nw = data_unsplit[0]
-        individual_names = data_unsplit[1]
-        if social_nw:
+        data_unsplit = data_retrieval.get_data(data_file)
+        if data_unsplit:
             valid_filename = 1
+            social_nw = data_unsplit[0]
+            individual_names = data_unsplit[1]
         else:
             print("Invalid filename")
 
