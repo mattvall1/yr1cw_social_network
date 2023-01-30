@@ -10,7 +10,7 @@ import statistics
 
 
 def main():
-    global common_friends
+    common_friends = 0
     selected_menu_option = 0
     valid_filename = 0
 
@@ -35,7 +35,7 @@ def main():
         valid_selection = 0
 
         # Main menu
-        print("Menu: \n 1. Display social network \n 2. Display common friends \n 3. Recommend new friends (option 2 MUST be run FIRST) \n ------ Statistics ------ \n 4. Get number of friends for user \n 5. Get users with the least number of friends/no friends at all: \n 6. Add friend \n 7. Close")
+        print("Menu: \n 1. Display social network \n 2. Display common friends \n 3. Recommend new friends (option 2 MUST be run FIRST) \n ------ Statistics ------ \n 4. Display number of friends for user \n 5. Display users with the least number of friends/no friends at all: \n 6. Display relationships for user \n 7. Display indirect relationships")
 
         while valid_selection == 0:
             valid_menu_options = [1, 2, 3, 4, 5, 6, 7]
