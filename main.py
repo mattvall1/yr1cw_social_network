@@ -10,7 +10,7 @@ import statistics
 
 
 def main():
-    common_friends = 0
+    common_friends = []
     selected_menu_option = 0
     valid_filename = 0
 
@@ -78,15 +78,20 @@ def main():
             user = model.username_input_mgmt(individual_names)
             recommended_friend = friends.recommend_friend(common_friends, user)
 
-            # Print results nicely, first determining whether we need plurals
-            try:
-                if len(recommended_friend) > 1:
-                    print('Recommended friends for ', user, ' are ', ", ".join(recommended_friend))
-                else:
-                    print('Recommended friend for ', user, ' is ', recommended_friend[0])
-            except IndexError:
-                print('There are no recommended friends for', user)
-                # Return to main menu
+            # Check if any recommended friends are returned
+            if recommended_friend:
+                # Print results nicely, first determining whether we need plurals
+                try:
+                    if len(recommended_friend) > 1:
+                        print('Recommended friends for ', user, ' are ', ", ".join(recommended_friend))
+                    else:
+                        print('Recommended friend for ', user, ' is ', recommended_friend[0])
+                except IndexError:
+                    print('There are no recommended friends for', user)
+            else:
+                print("You need to run menu option 2 first.")
+
+            # Return to main menu
             model.return_to_menu()
 
         if selected_menu_option >= 4:

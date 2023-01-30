@@ -29,7 +29,6 @@ class Friends:
     def recommend_friend(self, common_friends, user):
         # Check to see if the common friends matrix is filled
         if len(common_friends) == 0:
-            print("You need to run menu option 2 first.")
             return False
 
         # Setup variables
