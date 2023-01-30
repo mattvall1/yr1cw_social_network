@@ -60,15 +60,24 @@ class Data:
                 # Add processed users and their friends into an appropriate data structure
                 all_users_friends.append([user, users_friends])
 
+            # Check consistency of the network before we return all users friends
+            for all_users in all_users_friends:
+                user_to_compare = all_users[0]
+                # Get indirect friends so we can check if the user exists in
+                for each_friend in all_users[1]:
+                    indirect_friends = []
+                    for all_users in all_users_friends:
+                        if all_users[0] == each_friend:
+                            # Add indirect friends into temporary list
+                            indirect_friends = indirect_friends + list(all_users[1])
+
+                    # If the network is inconsistent, raise an exception. Continue if not
+                    if user_to_compare in indirect_friends:
+                        continue
+                    else:
+                        raise Exception("Network is inconsistent")
+
+
             return [all_users_friends, individual_names] # Return both the network and ordered list of individual names
         else:
             return False
-
-    def get_user(self):
-        return self
-
-    def set_data(self):
-        return self
-
-    def set_user(self):
-        return self
