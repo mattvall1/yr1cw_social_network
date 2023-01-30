@@ -21,8 +21,8 @@ class Data:
         # Check datafile exists against dir list
         if __fileName in data_file_list:
             # Code to open file (use: nw_data1)
-            with open('data/' + __fileName, 'r') as f:
-                users = f.readlines()
+            with open('data/' + __fileName, 'r') as file:
+                users = file.readlines()
                 # Remove line endings from users list and split to get list of lists
                 users_cleaned = []
                 count = 0
