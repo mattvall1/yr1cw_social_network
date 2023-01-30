@@ -79,11 +79,14 @@ def main():
             recommended_friend = friends.recommend_friend(common_friends, user)
 
             # Print results nicely, first determining whether we need plurals
-            if len(recommended_friend) > 1:
-                print('Recommended friends for ', user, ' are ', ", ".join(recommended_friend))
-            else:
-                print('Recommended friend for ', user, ' is ', recommended_friend[0])
-            # Return to main menu
+            try:
+                if len(recommended_friend) > 1:
+                    print('Recommended friends for ', user, ' are ', ", ".join(recommended_friend))
+                else:
+                    print('Recommended friend for ', user, ' is ', recommended_friend[0])
+            except IndexError:
+                print('There are no recommended friends for', user)
+                # Return to main menu
             model.return_to_menu()
 
         if selected_menu_option >= 4:
