@@ -12,16 +12,16 @@ class Data:
         self.__fileName = ''
         self.total_users = 0
 
-    def get_data(self, __fileName):
+    def get_data(self, __file_name):
         # Add file extension to fileName
-        __fileName = __fileName + '.txt'
+        __file_name = __file_name + '.txt'
 
         # Get a list of files in the data directory
         data_file_list = os.listdir('data')
         # Check datafile exists against dir list
-        if __fileName in data_file_list:
+        if __file_name in data_file_list:
             # Code to open file (use: nw_data1)
-            with open('data/' + __fileName, 'r') as file:  # This is not duplicate because ....... Mention this in the bugs report - legacy files
+            with open('data/' + __file_name, 'r') as file:  # This is not duplicate because ....... Mention this in the bugs report - legacy files
                 users = file.readlines()
                 # Remove line endings from users list and split to get list of lists
                 users_cleaned = []
@@ -63,7 +63,7 @@ class Data:
             # Check consistency of the network before we return all users friends
             for all_users_outer in all_users_friends:
                 user_to_compare = all_users_outer[0]
-                # Get indirect friends so we can check if the user exists in
+                # Get indirect friends, so we can check if the user exists in
                 for each_friend in all_users_outer[1]:
                     indirect_friends = []
                     for all_users_inner in all_users_friends:

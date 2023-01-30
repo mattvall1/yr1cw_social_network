@@ -26,7 +26,7 @@ class Statistics(friends.Friends):
             friend_counts_no_names.append(len(user[1])) # No names, to get second-lowest number later on
         friend_counts = sorted(friend_counts)
 
-        # Get lowest number that isn't 0, if 0 exists.
+        # Get the lowest number that isn't 0, if 0 exists.
         friend_counts_no_names = sorted(numpy.unique(friend_counts_no_names))
         if friend_counts_no_names[0] == 0:
             lowest_number = friend_counts_no_names[1]
@@ -56,7 +56,7 @@ class Statistics(friends.Friends):
         for friends_array in self.all_users_friends:
             user_friends = []
             for each_friend in friends_array[1]:
-                # Get relationships for each of the users friends - convert to list so we can remove the user themselves
+                # Get relationships for each of the users friends - convert to list, so we can remove the user themselves
                 user_friends = list(self.get_relationships_for_user(each_friend))
                 user_friends.remove(friends_array[0])
 
