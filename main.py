@@ -13,6 +13,8 @@ def main():
     common_friends = []
     selected_menu_option = 0
     valid_filename = 0
+    social_nw = []
+    individual_names = []
 
     # Initialise social network routine
     data_retrieval = data.Data()
@@ -45,7 +47,7 @@ def main():
                 if selected_menu_option in valid_menu_options:
                     valid_selection = 1
                 else:
-                    print("Invalid selection, try again. IFF")
+                    print("Invalid selection, try again.")
             except ValueError:
                 print('Invalid selection, try again.')
                 break
