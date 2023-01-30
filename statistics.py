@@ -54,9 +54,13 @@ class Statistics(friends.Friends):
         indirect_friends = []
         # Run through all users to get each of their friends lists
         for friends_array in self.all_users_friends:
+            user_friends = []
             for each_friend in friends_array[1]:
-                # Get relationships for each of the users friends
-                user_friends = self.get_relationships_for_user(each_friend)
+                # Get relationships for each of the users friends - convert to list so we can remove the user themselves
+                user_friends = list(self.get_relationships_for_user(each_friend))
                 user_friends.remove(friends_array[0])
+
+            # Add indirect friends into a list to return
             indirect_friends.append([friends_array[0], user_friends])
+
         return indirect_friends
