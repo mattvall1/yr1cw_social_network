@@ -32,7 +32,7 @@ class Friends:
             return False
 
         # Setup variables
-        user_friends = 0
+        user_friends = []
 
         # Find a match for the given user and get common friends count
         for friends in common_friends:

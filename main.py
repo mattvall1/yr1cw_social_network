@@ -55,13 +55,8 @@ def main():
         friends = fr.Friends(social_nw)
         # 1. Display social network
         if int(selected_menu_option) == 1:
-            # Pretty print connections
-            for user in social_nw:
-                # Convert set into comma seperated string
-                try:
-                    print(user[0], " -> ", ", ".join(user[1]))
-                except IndexError:
-                    print(user[0], " -> ")
+            # Pretty print the data
+            model.pretty_print(social_nw)
 
             # Return to main menu
             model.return_to_menu()
@@ -69,8 +64,8 @@ def main():
         # 2. Display common friends
         elif int(selected_menu_option) == 2:
             common_friends = friends.get_common_friends()
-            for common_friends_for_user in common_friends:
-                print(common_friends_for_user[0], " -> ", common_friends_for_user[1])
+            # Pretty print the data
+            model.pretty_print(common_friends)
 
             # Return to main menu
             model.return_to_menu()
@@ -125,9 +120,8 @@ def main():
                 model.return_to_menu()
             elif int(selected_menu_option) == 7:
                 indirect_friends = stats.get_indirect_relationships()
-                # Pretty print indirect friends
-                for indirect_friend in indirect_friends:
-                    print(indirect_friend[0], " -> ", ", ".join(indirect_friend[1]))
+                # Pretty print the data
+                model.pretty_print(indirect_friends)
 
                 # Return to main menu
                 model.return_to_menu()
