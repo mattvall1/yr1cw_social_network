@@ -33,7 +33,7 @@ def main():
         else:
             print("Invalid filename")
 
-    while selected_menu_option != 6:
+    while selected_menu_option != 8:
         valid_selection = 0
 
         # Main menu
@@ -91,7 +91,7 @@ def main():
             # Return to main menu
             model.return_to_menu()
 
-        if selected_menu_option >= 4:
+        elif selected_menu_option >= 4:
             # Get stats class for use in all following menu options
             stats = statistics.Statistics(social_nw)
 
@@ -114,7 +114,8 @@ def main():
             elif int(selected_menu_option) == 6:
                 user = model.username_input_mgmt(individual_names)
                 relationships = stats.get_relationships_for_user(user)
-                print(user, " -> ", ", ".join(relationships))
+                if relationships:
+                    print(user, " -> ", ", ".join(relationships))
 
                 # Return to main menu
                 model.return_to_menu()
