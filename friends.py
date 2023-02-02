@@ -13,11 +13,11 @@ class Friends:
         # Run through the list of users and their friends
         for user in self.all_users_friends:
             common_friends = []
-            user_to_compare_friends = user[1]
+            user_to_compare_friends = set(user[1])
 
             # Run through the list of users and their friends again, to work out common friends for each other user
             for friend in self.all_users_friends:
-                user_to_compare_friends_2 = friend[1]
+                user_to_compare_friends_2 = set(friend[1])
 
                 # Intersection of the two sets of friends - gets a count of the common friends
                 common_friends.append(len(user_to_compare_friends & user_to_compare_friends_2))

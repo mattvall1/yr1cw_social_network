@@ -45,15 +45,15 @@ class Data:
             # Create a list of users and their friends
             for user in individual_names:
                 # Start by creating a set of friends for each user
-                users_friends = set()
+                users_friends = []
                 for item in users_cleaned:
                     # Exception handling, if item[1] does not exist, continue
                     try:
                         # Check first item against user to get users friends and add to list
                         if item[0] == user:
-                            users_friends.add(item[1])
+                            users_friends.append(item[1])
                         elif item[1] == user:
-                            users_friends.add(item[0])
+                            users_friends.append(item[0])
                     except IndexError:
                         continue
 
