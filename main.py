@@ -100,14 +100,12 @@ def main():
                 no_of_friends = stats.get_friends_count_for_user(user)
                 if no_of_friends:
                     print(user, " has ", no_of_friends, " friends.")
-                else:
-                    print("Inputted name does not exist")
 
                 # Return to main menu
                 model.return_to_menu()
             elif int(selected_menu_option) == 5:
                 users_no_friends = stats.get_users_with_low_friends()
-                print("The following users have few or no friends", ", ".join(users_no_friends))
+                print("The following users have few or no friends:", ", ".join(users_no_friends))
 
                 # Return to main menu
                 model.return_to_menu()
