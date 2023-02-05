@@ -37,7 +37,7 @@ def main():
         valid_selection = 0
 
         # Main menu
-        print("Menu: \n 1. Display social network \n 2. Display common friends \n 3. Recommend new friends (option 2 MUST be run FIRST) \n ------ Statistics ------ \n 4. Display number of friends for user \n 5. Display users with the least number of friends/no friends at all: \n 6. Display relationships for user \n 7. Display indirect relationships")
+        print("Menu: \n 1. Display social network \n 2. Display common friends \n 3. Recommend new friends (option 2 MUST be run FIRST) \n ------ Statistics ------ \n 4. Display number of friends for user \n 5. Display users with the least number of friends/no friends at all \n 6. Display relationships for user \n 7. Display indirect relationships")
 
         while valid_selection == 0:
             valid_menu_options = [1, 2, 3, 4, 5, 6, 7]
@@ -95,6 +95,7 @@ def main():
             # Get stats class for use in all following menu options
             stats = statistics.Statistics(social_nw)
 
+            # 4. Display number of friends for user
             if int(selected_menu_option) == 4:
                 user = model.username_input_mgmt(individual_names)
                 no_of_friends = stats.get_friends_count_for_user(user)
@@ -103,12 +104,14 @@ def main():
 
                 # Return to main menu
                 model.return_to_menu()
+            # 5. Display users with the least number of friends/no friends at all
             elif int(selected_menu_option) == 5:
                 users_no_friends = stats.get_users_with_low_friends()
                 print("The following users have few or no friends:", ", ".join(users_no_friends))
 
                 # Return to main menu
                 model.return_to_menu()
+            # 6. Display relationships for user
             elif int(selected_menu_option) == 6:
                 user = model.username_input_mgmt(individual_names)
                 relationships = stats.get_relationships_for_user(user)
@@ -117,6 +120,7 @@ def main():
 
                 # Return to main menu
                 model.return_to_menu()
+            # 7. Display indirect relationships
             elif int(selected_menu_option) == 7:
                 indirect_friends = stats.get_indirect_relationships()
                 # Pretty print the data
