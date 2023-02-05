@@ -22,8 +22,10 @@ class Statistics(friends.Friends):
         friend_counts = []
         friend_counts_no_names = []
         for user in self.all_users_friends:
-            friend_counts.append([len(user[1]), user[0]])
-            friend_counts_no_names.append(len(user[1])) # No names, to get second-lowest number later on
+            # Get friend count for user
+            friend_count = self.get_friends_count_for_user(user[0])
+            friend_counts.append([friend_count, user[0]])
+            friend_counts_no_names.append(friend_count)
         friend_counts = sorted(friend_counts)
 
         # Get the lowest number that isn't 0, if 0 exists.
