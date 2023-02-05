@@ -5,7 +5,6 @@
 """
 import copy
 
-
 def return_to_menu():
     # Ask if we want to return to main menu, in a loop in case of wrong input
     valid_return = 0
