@@ -1,6 +1,6 @@
 """
     Author: Matthew Vallance 001225832
-    Purpose: Methods for dealing with friends - describe better...
+    Purpose: Class with methods for processing the friends and accompanying data - F2
     Date: 15/01/22
 """
 

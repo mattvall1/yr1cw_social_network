@@ -1,8 +1,9 @@
 """
     Author: Matthew Vallance 001225832
-    Purpose: Getting statistics
+    Purpose: Class with methods for getting statistics - F3
     Date: 15/01/22
 """
+
 import friends
 import numpy
 
