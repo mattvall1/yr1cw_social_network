@@ -73,7 +73,7 @@ def main():
         # 3. Recommend new friends
         elif int(selected_menu_option) == 3:
             user = model.username_input_mgmt(individual_names)
-            recommended_friend = friends.recommend_friend(common_friends, user)
+            recommended_friend = friends.get_recommend_friends(common_friends, user)
 
             # Display message if menu item 2 has not been run
             if recommended_friend != False: # Note: Cannot be simplified, as this can be a blank list
