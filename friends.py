@@ -26,7 +26,7 @@ class Friends:
 
         return self.common_friends_matrix
 
-    def get_recommend_friends(self, common_friends, user):
+    def get_recommended_friends(self, common_friends, user):
         # Check to see if the common friends matrix is filled
         if len(common_friends) == 0:
             return False
