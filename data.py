@@ -21,7 +21,7 @@ class Data:
         # Check datafile exists against dir list
         if __file_name in data_file_list:
             # Code to open file (use: nw_data1)
-            with open('data/' + __file_name, 'r') as file:  # This is not duplicate because ....... Mention this in the bugs report - legacy files
+            with open('data/' + __file_name, 'r') as file:
                 users = file.readlines()
                 # Remove line endings from users list and split to get list of lists
                 users_cleaned = []
