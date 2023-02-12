@@ -41,7 +41,7 @@ def main():
 
         while valid_selection == 0:
             valid_menu_options = [1, 2, 3, 4, 5, 6, 7]
-            # Check menu option is correct data type - CAN THIS BE DONE NEATLY?
+            # Check menu option is correct data type
             try:
                 selected_menu_option = int(input("Select an option: "))
                 if selected_menu_option in valid_menu_options:
@@ -50,7 +50,6 @@ def main():
                     print("Invalid selection, try again.")
             except ValueError:
                 print('Invalid selection, try again.')
-                break
 
         friends = fr.Friends(social_nw)
         # 1. Display social network
@@ -117,6 +116,8 @@ def main():
                 relationships = stats.get_relationships_for_user(user)
                 if relationships:
                     print(user, " -> ", ", ".join(relationships))
+                else:
+                    print(user, "has no friends.")
 
                 # Return to main menu
                 model.return_to_menu()
