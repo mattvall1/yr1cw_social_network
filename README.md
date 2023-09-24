@@ -4,3 +4,4 @@
 The overall task for this project is to design and develop a standalone application in Python for analysing small social networks and recommending likely new friends.
 ### Notes
 - This coursework recieved a 100% on the requirements and execution of the project
+- The task_documents folder contains the specifications and feedback files for this coursework
